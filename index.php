@@ -6,7 +6,7 @@
  <!DOCTYPE html>
  <html>
  <head>
- <title>Horribly Unsecure PHP Website</title>
+ <title>Somewhat Secure PHP Website</title>
  <style>
 
 /*
@@ -50,23 +50,14 @@ table {
   margin-right: 25%;
 }
 
-body {
-  background-image: url("photoOfMyBackyardRinkWithoutTrees.png");
-}
 </style>
  </head>
  <body>
-     <?php
-     if(isset($_SESSION['username']))
-     {
-       echo('<p>You have <b>logged in!!!!</b></p>');
-     }
-     else {
-       echo('<div class="topnav">');
-       echo('<a href="login.php">Login</a>');
-       echo('<a href="admin_login.php">Admin Login</a>');
-       echo('</div>');
-     }
-     ?>
+   <?php
+     echo('<div class="topnav">');
+     echo('<a href="login.php">Login</a>');
+     echo('<a href="admin_login.php">Admin Login</a>');
+     echo('</div>');
+   ?>
  </body>
  </html>

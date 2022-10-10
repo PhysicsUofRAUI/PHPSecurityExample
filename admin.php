@@ -19,7 +19,7 @@ $users_data = mysqli_query($conn, "SELECT * FROM user");
 <html>
 <head>
 
-<title>Horribly Unsecure PHP Website</title>
+<title>Somewhat Secure PHP Website</title>
 <style>
 .topnav {
  overflow: hidden;

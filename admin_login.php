@@ -10,7 +10,7 @@ $dbhost = 'localhost';
 $dbuser = 'ex';
 $dbpass = 'super_secret_pass';
 $dbname = 'php_login_ex';
-$conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);
+$conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
 // Check to see if we have some POST data, if we do process it
 if ( isset($_POST['email']) && isset($_POST['pass']) )
@@ -33,8 +33,18 @@ if ( isset($_POST['email']) && isset($_POST['pass']) )
     $email = $_POST['email'];
     $password = $_POST['pass'];
 
-    $result_admin_lookup = mysqli_query($conn, "SELECT * FROM admin where email='" . $email . "' and password = '" . $password . "'");
-    while ($query_data_admin_lookup = mysqli_fetch_assoc($result_admin_lookup))
+    // define admin lookup query
+    $admin_lookup = $conn->prepare("SELECT email FROM admin WHERE email = ? AND password = ?");
+
+    // bind query parameters to user input
+    $admin_lookup->bind_param("ss", $email, $password);
+
+    // execute the query
+    $admin_lookup->execute();
+
+    // bind the resulf of the query to a variable
+    $admin_lookup->bind_result($email);
+    while ($admin_lookup->fetch())
     {
       $_SESSION['admin_name'] = $email;
       $flag = true;
@@ -54,7 +64,7 @@ if ( isset($_POST['email']) && isset($_POST['pass']) )
 <html>
 <head>
 
-<title>Horribly Unsecure PHP Website</title>
+<title>Somewhat Secure PHP Website</title>
 </head>
 <body>
 

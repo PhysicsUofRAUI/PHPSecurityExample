@@ -11,7 +11,7 @@ if (!isset($_SESSION['name']))
 <html>
 <head>
 
-<title>Horribly Unsecure PHP Website</title>
+<title>Somewhat Secure PHP Website</title>
 <style>
 .topnav {
  overflow: hidden;
