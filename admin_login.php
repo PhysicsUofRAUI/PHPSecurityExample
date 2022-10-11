@@ -33,8 +33,8 @@ if ( isset($_POST['email']) && isset($_POST['pass']) )
     $email = $_POST['email'];
     $password = $_POST['pass'];
 
-    $result_admin_lookup = mysqli_query($conn, "SELECT * FROM admin where email='" . $email . "' and password = '" . $password . "'");
-    while ($query_data_admin_lookup = mysqli_fetch_assoc($result_admin_lookup))
+    $admin_lookup = mysqli_query($conn, "SELECT * FROM admin where email='" . $email . "' and password = '" . $password . "'");
+    while ($query_data_admin_lookup = mysqli_fetch_assoc($admin_lookup))
     {
       $_SESSION['admin_name'] = $email;
       $flag = true;
